@@ -1,0 +1,9 @@
+:listening_port {
+  tls off
+  log / stdout "{request} Body: {request_body}"
+  errors stderr
+  timeouts 1m
+
+  proxy / destination:port {
+    transparent
+}

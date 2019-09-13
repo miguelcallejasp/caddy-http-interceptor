@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    mojix.service: catcher
+  name: catcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      mojix.service: catcher
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        mojix.service: catcher
+    spec:
+      containers:
+      - args:
+        - --conf
+        - /etc/Caddyfile
+        - -http2=false
+        image: coffeespiller/catcher:latest
+        name: catcher
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: 256Mi
+          requests:
+            memory: 256Mi
+      hostname: catcher
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: saas-mojix-io
+  labels:
+    mojix.service: catcher
+  name: catcher
+spec:
+  ports:
+  - name: "catcher"
+    port: 80
+    targetPort: 80
+  selector:
+    mojix.service: catcher
+status:
+  loadBalancer: {}

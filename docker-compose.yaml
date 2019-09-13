@@ -1,0 +1,11 @@
+version: "2.3"
+services:
+  catcher:
+    image: coffeespiller/catcher:latest
+    container_name: catcher
+    ports:
+      - 1515:1515
+    environment:
+      - LISTENING_PORT=1515
+      - DESTINATION_ADDRESS=10.100.1.238
+      - DESTINATION_PORT=99
