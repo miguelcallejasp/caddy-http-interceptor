@@ -17,19 +17,17 @@ spec:
         mojix.service: catcher
     spec:
       containers:
-      - args:
-        - --conf
-        - /etc/Caddyfile
-        - -http2=false
         image: coffeespiller/catcher:latest
         name: catcher
+        environment:
+          - name: 
         ports:
         - containerPort: 80
         resources:
           limits:
-            memory: 256Mi
+            memory: 128Mi
           requests:
-            memory: 256Mi
+            memory: 128Mi
       hostname: catcher
       restartPolicy: Always
 
