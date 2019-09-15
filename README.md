@@ -1,4 +1,4 @@
-# HTTP Fast Proxy
+# HTTP Catcher Proxy
 
 ### Why
 You want to print what exact http headers and http body are being sent from one service to another without disrupting anything. 
@@ -9,7 +9,7 @@ Straightforward build the container:
 ```
 docker build .
 ```
-### Environment Variables
+#### Environment Variables
 
 | Variable  | Description |
 | ------------- | ------------- |
@@ -25,4 +25,5 @@ You can use the `docker-compose.yaml` example, or the Kubernetes `deployment.yam
 docker run -it -p 1515:1515 -e LISTENING_PORT=1515 -e DESTINATION_ADDRESS=192.168.1.1 -e DESTINATION_PORT=80 coffeespiller/catcher:latest
 ```
 
-Test it with a `curl http://localhost:1515 -H 'Header: I can see you' -d '{}'`
+### Test it
+Issue a a `curl http://localhost:1515 -H 'Header: I can see you' -d '{}'`
