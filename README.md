@@ -9,16 +9,14 @@ Straightforward build the container:
 ```
 docker build .
 ```
-### Variables
-Available variables:
-- LISTENING_PORT
-Define on which port this service will hear HTTP requests. Make sure you have that port exposed or with a service attached in the case of Kubernetes. 
+### Environment Variables
 
-- DESTINATION_ADDRESS
-Define where the HTTP Request is going to be forwarded to. 
+| Variable  | Description |
+| ------------- | ------------- |
+| LISTENING_PORT | Define on which port this service will hear HTTP requests. Make sure you have that port exposed or with a service attached in the case of Kubernetes. |
+| DESTINATION_ADDRESS | Define where the HTTP Request is going to be forwarded to. |
+| DESTINATION_PORT | Define the port of the destination. |
 
-- DESTINATION_PORT
-Define the port of the destination.
 
 ### Run it
 You can use the `docker-compose.yaml` example, or the Kubernetes `deployment.yaml` to run it in your environment. Or you can just play using:
