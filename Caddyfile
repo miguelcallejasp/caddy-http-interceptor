@@ -1,8 +1,8 @@
 :listening_port {
   tls off
-  log / stdout "{request} Body: {request_body}"
+  log / stdout "sidecar:podtag [{when}] \"{method} {uri}\" host={>Host} origin={>Origin} apikey={>apikey}{>api_key} clientid={>Clientid} agent={>User-Agent} response={status} size={size} latency={latency_ms}"
   errors stderr
-  timeouts 1m
+  timeouts 10m
 
   proxy / destination:port {
     transparent
