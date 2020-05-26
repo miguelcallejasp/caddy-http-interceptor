@@ -25,11 +25,14 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build :latest
+    - name: Build
       run: docker build -t coffeespiller/catcher:latest .
 
-    - name: Push to docker hub :latest
-      run: docker push coffeespiller/catcher:latest
+    - name: Push to Docker Hub
+      uses: actions-hub/docker@master
+      if: success()
+      with:
+        args: push coffeespiller/catcher:latest
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
