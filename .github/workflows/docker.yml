@@ -29,9 +29,7 @@ jobs:
       run: docker build -t coffeespiller/catcher:latest .
 
     - name: Push to docker hub :latest
-      uses: actions-hub/docker@master
-      with:
-        args: push coffeespiller/catcher:latest
+      run: docker push coffeespiller/catcher:latest
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
@@ -41,4 +39,3 @@ jobs:
         SLACK_USERNAME: coffee-buddy
         SLACK_COLOR: good
         SLACK_MESSAGE: 'New catcher! :rocket:'
-    
