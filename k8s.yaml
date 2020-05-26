@@ -19,8 +19,15 @@ spec:
       containers:
         image: coffeespiller/catcher:latest
         name: catcher
-        environment:
-          - name: 
+        env:
+        - name: LISTENING_PORT
+          value: "8999"
+        - name: DESTINATION_ADDRESS
+          value: "localhost"
+        - name: DESTINATION_PORT
+          value: "8080"
+        - name: POD_TAG
+          value: "services"
         ports:
         - containerPort: 80
         resources:
