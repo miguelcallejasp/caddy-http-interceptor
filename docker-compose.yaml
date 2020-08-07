@@ -1,13 +1,14 @@
 version: "2.3"
 services:
   catcher:
-    image: coffeespiller/catcher:latest
+    #image: coffeespiller/catcher:latest
+    build: .
     container_name: catcher
     ports:
       - 1515:1515
     environment:
       - LISTENING_PORT=1515
-      - DESTINATION_ADDRESS=https://notebooks.rfid.centauro.com.br
+      - DESTINATION_ADDRESS=https://notebooks.mojixretail.io
       - DESTINATION_PORT=443
       - POD_TAG=services
       - DEBUG=false

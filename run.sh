@@ -18,10 +18,10 @@ sed -i "s|podtag|${POD_TAG}|g" /etc/Caddyfile
 if [[ $DEBUG == "true" ]]
 then
     #line 4 has the debug log
-    sed '4s/^/#/' /etc/Caddyfile 
+    sed -i '3s/^/#/' /etc/Caddyfile 
 else
     #line 3 has the debug log
-    sed '3s/^/#/' /etc/Caddyfile
+    sed -i '4s/^/#/' /etc/Caddyfile
 fi
 
 echo "Starting Proxy"
