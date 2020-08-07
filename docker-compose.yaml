@@ -10,3 +10,4 @@ services:
       - DESTINATION_ADDRESS=https://notebooks.rfid.centauro.com.br
       - DESTINATION_PORT=443
       - POD_TAG=services
+      - DEBUG=false

@@ -1,6 +1,7 @@
 :listening_port {
   tls off
-  log / stdout "sidecar:podtag [{when}] \"{method} {uri}\" host={>Host} origin={>Origin} apikey={>apikey}{>api_key} clientid={>Clientid} tenant={>tenant} agent={>User-Agent} response={status} size={size} latency={latency_ms}"
+  #log / stdout "sidecar:podtag [{when}] \"{method} {uri}\" host={>Host} origin={>Origin} apikey={>apikey}{>api_key} clientid={>Clientid} tenant={>tenant} agent={>User-Agent} auth={>Authorization} response={status} size={size} latency={latency_ms}"
+  #log / stdout "sidecar:podtag [{when}] \"{method} {uri}\" host={>Host} origin={>Origin} apikey={>apikey}{>api_key} clientid={>Clientid} tenant={>tenant} agent={>User-Agent} auth={>Authorization} response={status} size={size} latency={latency_ms} debug={request_body}"  
   errors stderr
   timeouts 10m
 
