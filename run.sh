@@ -3,6 +3,7 @@
 LISTENING_PORT=${LISTENING_PORT:="8080"}
 DESTINATION_ADDRESS=${DESTINATION_ADDRESS:="www.google.com"}
 DESTINATION_PORT=${DESTINATION_PORT=:"80"}
+DEBUG=${DEBUG=:"false"}
 
 echo "Listening on port: ${LISTENING_PORT}"
 echo "Destination address: ${DESTINATION_ADDRESS}"
@@ -15,13 +16,14 @@ sed -i "s|destination|${DESTINATION_ADDRESS}|g" /etc/Caddyfile
 sed -i "s|port|${DESTINATION_PORT}|g" /etc/Caddyfile
 sed -i "s|podtag|${POD_TAG}|g" /etc/Caddyfile
 
-if [[ $DEBUG == "true" ]]
+if [ $DEBUG == "true" ]
 then
     #line 4 has the debug log
-    sed -i '3s/^/#/' /etc/Caddyfile 
+    echo "Debug is enabled!"
+    sed -i '4s/^/#/' /etc/Caddyfile 
 else
     #line 3 has the debug log
-    sed -i '4s/^/#/' /etc/Caddyfile
+    sed -i '5s/^/#/' /etc/Caddyfile
 fi
 
 echo "Starting Proxy"
