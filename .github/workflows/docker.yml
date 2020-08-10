@@ -28,7 +28,6 @@ jobs:
 
     - name: Build 
       run: |
-        docker login docker.io
         echo ${IMAGE_TAG}
         if [ ${IMAGE_TAG} == "master" ]; then
           export DOCKER_TAG=latest
