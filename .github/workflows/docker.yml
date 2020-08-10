@@ -38,19 +38,11 @@ jobs:
         fi
         echo "Image built is: index.docker.io/coffeespiller/catcher:${DOCKER_TAG}"
         
-    - name: Push to Docker 
+    - name: Push to Docker Hub
+      uses: actions-hub/docker@master
       if: success()
-      run: |
-        echo ${IMAGE_TAG}
-        if [ ${IMAGE_TAG} == "master" ]; then
-          export DOCKER_TAG=latest
-          docker push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
-        else
-          export DOCKER_TAG=${IMAGE_TAG}
-          docker push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
-        fi
-        echo "Image built is: index.docker.io/coffeespiller/catcher:${DOCKER_TAG}"
-
+      with:
+        args: push coffeespiller/catcher:${IMAGE_TAG}
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
