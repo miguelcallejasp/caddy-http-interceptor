@@ -22,11 +22,13 @@ jobs:
     - name: Login to Docker Hub
       uses: actions-hub/docker/login@master
       env:
-        DOCKER_USERNAME: coffeespiller
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_REGISTRY_URL: index.docker.io
 
-    - name: Build & Push
+    - name: Build 
       run: |
+        docker login docker.io
         echo ${IMAGE_TAG}
         if [ ${IMAGE_TAG} == "master" ]; then
           export DOCKER_TAG=latest
@@ -36,8 +38,13 @@ jobs:
           docker build -t index.docker.io/coffeespiller/catcher:${DOCKER_TAG} .
         fi
         echo "Image built is: index.docker.io/coffeespiller/catcher:${DOCKER_TAG}"
-        echo "Pushing the image"
-        docker push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
+        
+    - name: Push to docker hub :latest
+      if: success()
+      uses: actions-hub/docker@master
+      with:
+        args: push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
+
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
