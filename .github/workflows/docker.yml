@@ -40,9 +40,16 @@ jobs:
         
     - name: Push to Docker 
       if: success()
-      uses: actions-hub/docker@master
-      with:
-        args: push index.docker.io/coffeespiller:${DOCKER_TAG}
+      run: |
+        echo ${IMAGE_TAG}
+        if [ ${IMAGE_TAG} == "master" ]; then
+          export DOCKER_TAG=latest
+          docker push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
+        else
+          export DOCKER_TAG=${IMAGE_TAG}
+          docker push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
+        fi
+        echo "Image built is: index.docker.io/coffeespiller/catcher:${DOCKER_TAG}"
 
 
     - name: Slack Notification
