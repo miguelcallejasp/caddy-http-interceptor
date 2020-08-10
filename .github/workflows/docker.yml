@@ -27,8 +27,14 @@ jobs:
 
     - name: Build
       run: |
-        echo /${GITHUB_REF}
-        docker build -t coffeespiller/catcher:latest .
+        echo ${IMAGE_TAG}
+        if [ ${IMAGE_TAG} == "master" ]; then
+          export DOCKER_TAG=latest
+          docker build -t coffeespiller/catcher:${DOCKER_TAG} .
+        else
+          export DOCKER_TAG=${IMAGE_TAG}
+          docker build -t coffeespiller/catcher:${DOCKER_TAG} .
+        fi
 
     - name: Push to Docker Hub
       uses: actions-hub/docker@master
