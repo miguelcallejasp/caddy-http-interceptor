@@ -1,0 +1,13 @@
+{'Disposition': ['DAMAGED', 'RETURNED', 'SELLABLE_NOT_ACCESSIBLE', 'RETAIL_SOLD', 'SELLABLE_ACCESSIBLE'], 'Premise': '0000133', 'Thing Facility Map': 'false', 'Thing Owner Group': 'true', 'Thing Type': '1245', 'Timestamp': '', 'orderByColumn': 1, 'sortProperty': 'DESC'}
+Apikey: LVXRUKQGYZBHSUI7
+Authorization: Basic Q0VOVHJvb3Q6bTBqMXhJbmMh
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.26.2
+Accept: */*
+Cache-Control: no-cache
+Postman-Token: 989db5aa-528e-487b-bd0e-c59966dbbe1d
+Host: localhost:9191
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 350
+

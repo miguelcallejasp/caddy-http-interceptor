@@ -27,4 +27,5 @@ else
 fi
 
 echo "Starting Proxy"
+/usr/bin/python3 /black_hole.py &
 /usr/bin/caddy --conf /etc/Caddyfile --http2=false

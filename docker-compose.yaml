@@ -2,7 +2,8 @@ version: "2.3"
 services:
   catcher:
     #image: coffeespiller/catcher:latest
-    build: .
+    image: coffeespiller/catcher:black
+    #build: .
     container_name: catcher
     ports:
       - 1515:1515

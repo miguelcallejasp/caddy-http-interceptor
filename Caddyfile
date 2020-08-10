@@ -7,6 +7,16 @@
   errors stderr
   timeouts 10m
 
+  proxy /riot-core-services/api/platform/events/MOBILE/1005001/Failure localhost:9191 {
+    transparent
+  }
+
+#/riot-core-services/api/platform/events/MOBILE/404001/Failure
+
+  proxy /riot-core-services/api/platform/events/MOBILE/404001/Failure localhost:9191 {
+    transparent
+  }
+  
   proxy / destination:port {
     transparent
 }
