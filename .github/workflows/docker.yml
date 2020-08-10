@@ -38,11 +38,11 @@ jobs:
         fi
         echo "Image built is: index.docker.io/coffeespiller/catcher:${DOCKER_TAG}"
         
-    - name: Push to docker hub :latest
+    - name: Push to Docker 
       if: success()
       uses: actions-hub/docker@master
       with:
-        args: push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
+        args: push index.docker.io/coffeespiller:${DOCKER_TAG}
 
 
     - name: Slack Notification
