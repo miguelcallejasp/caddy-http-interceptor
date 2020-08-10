@@ -30,14 +30,14 @@ jobs:
         echo ${IMAGE_TAG}
         if [ ${IMAGE_TAG} == "master" ]; then
           export DOCKER_TAG=latest
-          docker build -t coffeespiller/catcher:${DOCKER_TAG} .
+          docker build -t index.docker.io/coffeespiller/catcher:${DOCKER_TAG} .
         else
           export DOCKER_TAG=${IMAGE_TAG}
-          docker build -t coffeespiller/catcher:${DOCKER_TAG} .
+          docker build -t index.docker.io/coffeespiller/catcher:${DOCKER_TAG} .
         fi
-        echo "Image built is: coffeespiller/catcher:${DOCKER_TAG}"
+        echo "Image built is: index.docker.io/coffeespiller/catcher:${DOCKER_TAG}"
         echo "Pushing the image"
-        docker push coffeespiller/catcher:${DOCKER_TAG}
+        docker push index.docker.io/coffeespiller/catcher:${DOCKER_TAG}
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
