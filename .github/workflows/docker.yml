@@ -25,7 +25,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build
+    - name: Build & Push
       run: |
         echo ${IMAGE_TAG}
         if [ ${IMAGE_TAG} == "master" ]; then
@@ -36,12 +36,8 @@ jobs:
           docker build -t coffeespiller/catcher:${DOCKER_TAG} .
         fi
         echo "Image built is: coffeespiller/catcher:${DOCKER_TAG}"
-
-    - name: Push to Docker Hub
-      uses: actions-hub/docker@master
-      if: success()
-      with:
-        args: push coffeespiller/catcher:${DOCKER_TAG}
+        echo "Pushing the image"
+        docker push coffeespiller/catcher:${DOCKER_TAG}
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
