@@ -35,12 +35,13 @@ jobs:
           export DOCKER_TAG=${IMAGE_TAG}
           docker build -t coffeespiller/catcher:${DOCKER_TAG} .
         fi
+        echo "Image built is: coffeespiller/catcher:${DOCKER_TAG}"
 
     - name: Push to Docker Hub
       uses: actions-hub/docker@master
       if: success()
       with:
-        args: push coffeespiller/catcher:latest
+        args: push coffeespiller/catcher:${DOCKER_TAG}
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.0.2
